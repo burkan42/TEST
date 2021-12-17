@@ -1,0 +1,35 @@
+<!--output/templates/output/result.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <script>
+        var dict = JSON.parse(window.localStorage.getItem("dict"));
+        console.log(dict);
+    </script>
+
+    {% extends 'base1.html' %}
+    <title>Monarc</title>
+</head>  
+
+
+{% block content %}
+<html>
+  <body>
+        <h2>The results are:</h2>
+            {% csrf_token %}
+            <p>{{ desc }}</p>
+            {% for key in dict %}
+                <h3>{{key}}</h3>
+                <p> {{dict[key]}}</p>
+                <br>
+            {% endfor %}
+            <br>
+            <!-- inser plotjes -->
+    </body>
+</html>
+{% endblock %}
+
